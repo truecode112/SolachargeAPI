@@ -4,7 +4,7 @@ var conn = require('../db.js');
 var oc_router = express.Router();
 
 oc_router.get('/', (req, res) => {
-    let sqlQuery = "SELECT * FROM offset_capacity";
+    let sqlQuery = "SELECT * FROM OFFSET_CAPACITY";
 
     let query = conn.query(sqlQuery, (err, results) => {
         if(err) throw err;
@@ -18,7 +18,7 @@ oc_router.post('/', (req, res) => {
         CREATE_TIME : req.body.CREATE_TIME
     };
 
-    let sqlQuery = "INSERT INTO offset_capacity SET ?";
+    let sqlQuery = "INSERT INTO OFFSET_CAPACITY SET ?";
     let query = conn.query(sqlQuery, data, (err, results) => {
         if(err) throw err;
         res.send(JSON.stringify({"error":null, "response": "OK"}));

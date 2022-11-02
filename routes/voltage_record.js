@@ -4,7 +4,7 @@ var conn = require('../db.js');
 var vr_router = express.Router();
 
 vr_router.get('/', (req, res) => {
-    let sqlQuery = "SELECT * FROM voltage_record";
+    let sqlQuery = "SELECT * FROM VOLTAGE_RECORD";
 
     let query = conn.query(sqlQuery, (err, results) => {
         if(err) throw err;
@@ -31,7 +31,7 @@ vr_router.post('/', (req, res) => {
         REMAIND_CAPACITY : req.body.REMAIND_CAPACITY
     };
 
-    let sqlQuery = "INSERT INTO voltage_record SET ?";
+    let sqlQuery = "INSERT INTO VOLTAGE_RECORD SET ?";
     let query = conn.query(sqlQuery, record, (err, results) => {
         if(err) throw err;
         res.send(JSON.stringify({"error":null, "response": "OK"}));

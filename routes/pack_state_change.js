@@ -4,7 +4,7 @@ var conn = require('../db.js');
 var psc_router = express.Router();
 
 psc_router.get('/', (req, res) => {
-    let sqlQuery = "SELECT * FROM pack_state_change";
+    let sqlQuery = "SELECT * FROM PACK_STATE_CHANGE";
 
     let query = conn.query(sqlQuery, (err, results) => {
         if(err) throw err;
@@ -22,7 +22,7 @@ psc_router.post('/', (req, res) => {
         PARAM3 : req.body.PARAM3
     };
 
-    let sqlQuery = "INSERT INTO pack_state_change SET ?";
+    let sqlQuery = "INSERT INTO PACK_STATE_CHANGE SET ?";
     let query = conn.query(sqlQuery, data, (err, results) => {
         if(err) throw err;
         res.send(JSON.stringify({"error":null, "response": "OK"}));

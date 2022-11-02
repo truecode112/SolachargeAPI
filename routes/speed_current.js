@@ -4,7 +4,7 @@ var conn = require('../db.js');
 var sc_router = express.Router();
 
 sc_router.get('/', (req, res) => {
-    let sqlQuery = "SELECT * FROM speed_current";
+    let sqlQuery = "SELECT * FROM SPEED_CURRENT";
 
     let query = conn.query(sqlQuery, (err, results) => {
         if(err) throw err;
@@ -22,7 +22,7 @@ sc_router.post('/', (req, res) => {
         CREATE_TIME : req.body.CREATE_TIME
     };
 
-    let sqlQuery = "INSERT INTO speed_current SET ?";
+    let sqlQuery = "INSERT INTO SPEED_CURRENT SET ?";
     let query = conn.query(sqlQuery, data, (err, results) => {
         if(err) throw err;
         res.send(JSON.stringify({"error":null, "response": "OK"}));

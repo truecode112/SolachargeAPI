@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const PORT = 3000;
+const PORT = 50000;
 const bbr_router = require('./routes/battery_base_record.js');
 const bc_router = require('./routes/battery_capacity.js');
 const ir_router = require('./routes/internal_resistance.js');
@@ -12,7 +12,7 @@ const sc_router = require('./routes/speed_current.js');
 const vr_router = require('./routes/voltage_record.js');
 
 app.use(bodyParser.json());
-app.get('/', (req, res) => res.send('Welcome to HyperX NFT Marketplace!'));
+app.get('/', (req, res) => res.send('Welcome to SolaCharge Server'));
 
 app.use('/api/battery_base_record', bbr_router);
 app.use('/api/battery_capacity', bc_router);
@@ -23,7 +23,7 @@ app.use('/api/pack_state_change', psc_router);
 app.use('/api/speed_current', sc_router);
 app.use('/api/voltage_record', vr_router);
 
-app.listen(PORT, function(err){
+app.listen(PORT, "0.0.0.0", function(err){
     if (err) console.log(err);
     console.log("Server listening on PORT", PORT);
 });

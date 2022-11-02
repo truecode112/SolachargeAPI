@@ -4,7 +4,7 @@ var conn = require('../db.js');
 var ir_router = express.Router();
 
 ir_router.get('/', (req, res) => {
-    let sqlQuery = "SELECT * FROM internal_resistance";
+    let sqlQuery = "SELECT * FROM INTERNAL_RESISTANCE";
 
     let query = conn.query(sqlQuery, (err, results) => {
         if(err) throw err;
@@ -21,7 +21,7 @@ ir_router.post('/', (req, res) => {
         RES_CONSISTENCY : req.body.RES_CONSISTENCY
     };
 
-    let sqlQuery = "INSERT INTO internal_resistance SET ?";
+    let sqlQuery = "INSERT INTO INTERNAL_RESISTANCE SET ?";
     let query = conn.query(sqlQuery, data, (err, results) => {
         if(err) throw err;
         res.send(JSON.stringify({"error":null, "response": "OK"}));

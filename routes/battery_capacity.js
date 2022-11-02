@@ -4,7 +4,7 @@ var conn = require('../db.js');
 var bc_router = express.Router();
 
 bc_router.get('/', (req, res) => {
-    let sqlQuery = "SELECT * FROM battery_capacity";
+    let sqlQuery = "SELECT * FROM BATTERY_CAPACITY";
 
     let query = conn.query(sqlQuery, (err, results) => {
         if(err) throw err;
@@ -19,7 +19,7 @@ bc_router.post('/', (req, res) => {
         CAPACITY_ATTENUATE : req.body.CAPACITY_ATTENUATE
     };
 
-    let sqlQuery = "INSERT INTO battery_capacity SET ?";
+    let sqlQuery = "INSERT INTO BATTERY_CAPACITY SET ?";
     let query = conn.query(sqlQuery, data, (err, results) => {
         if(err) throw err;
         res.send(JSON.stringify({"error":null, "response": "OK"}));
